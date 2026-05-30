@@ -1,0 +1,6 @@
+2025-02-03 02:04:11 ERROR orders-service settlement: order_reconcile returned non-zero; finance_reconciliation NOT updated for 2025-02-02
+2025-02-03 02:04:11 ERROR orders-service settlement: no retry configured; exiting
+2024-11-05 14:22:09 FATAL shop-web db: SQLSTATE[HY000] [2059] Authentication plugin 'mysql_native_password' cannot be loaded (env=staging)
+2025-04-22 02:01:33 WARN  orders-service db: Lock wait timeout exceeded; transaction rolled back (table=orders)
+2025-04-22 19:48:11 WARN  shop-web db: Deadlock found when trying to get lock (table=orders); retrying
+2025-04-25 09:14:55 WARN  reporting-service: finance_reconciliation row count 0 for prior day; using cached report

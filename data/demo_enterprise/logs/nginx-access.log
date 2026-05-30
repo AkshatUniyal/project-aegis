@@ -1,0 +1,5 @@
+10.0.4.21 - - [22/Apr/2025:19:47:50 +0000] "POST /checkout HTTP/1.1" 200 412 "-" "Mozilla/5.0"
+10.0.4.21 - - [22/Apr/2025:19:48:03 +0000] "POST /checkout HTTP/1.1" 500 188 "-" "Mozilla/5.0"
+10.0.4.55 - - [22/Apr/2025:19:48:05 +0000] "POST /checkout HTTP/1.1" 503 188 "-" "Mozilla/5.0"
+10.0.4.55 - - [22/Apr/2025:19:48:12 +0000] "POST /checkout HTTP/1.1" 200 412 "-" "Mozilla/5.0"
+# 19:47–19:49 window: spike of 500/503 on /checkout correlates with orders lock waits.

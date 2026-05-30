@@ -1,0 +1,23 @@
+# Time: 2025-04-22T02:01:14.882Z
+# User@Host: orders_svc[orders_svc] @ db-prod-01 []
+# Query_time: 18.442  Lock_time: 6.210 Rows_sent: 1  Rows_examined: 2841992
+SET timestamp=1745287274;
+CALL order_reconcile('2025-04-21');
+
+# Time: 2025-04-22T02:01:40.119Z
+# User@Host: orders_svc[orders_svc] @ db-prod-01 []
+# Query_time: 12.870  Lock_time: 9.044 Rows_sent: 184  Rows_examined: 1992304
+SET timestamp=1745287300;
+SELECT o.customer_id, o.order_id, o.status, SUM(p.amount)
+FROM orders o JOIN payments p ON p.order_id = o.order_id
+WHERE DATE(o.created_at) = '2025-04-21' GROUP BY o.customer_id;
+
+# Time: 2025-04-22T19:48:03.450Z
+# User@Host: shop_web[shop_web] @ db-prod-01 []
+# Query_time: 8.221   Lock_time: 7.998 Rows_sent: 0  Rows_examined: 904112
+SET timestamp=1745351283;
+UPDATE orders SET status = 'paid' WHERE order_id = 88241; -- lock wait near timeout
+
+# Observations:
+# - order_reconcile scans ~2.8M rows nightly; lock_time dominates.
+# - The orders UPDATE during peak shows lock_time 7.99s (timeout is 8s).

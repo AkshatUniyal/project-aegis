@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.python-version
+
+# Local stores (regenerated)
+storage/vector_db/*
+storage/sqlite/*.db
+outputs/reports/*
+outputs/agent_runs/*
+!**/.gitkeep
+
+# Env
+.env
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# OS
+.DS_Store
+
+# Editor / tooling artifacts
+.vscode/
+*.md.local
